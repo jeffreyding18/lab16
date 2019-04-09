@@ -89,18 +89,18 @@ negative distance should raise an Invalid_argument exception.)
 let go (v : vehicle) (distance : float) (direction : float) : vehicle =
     match v with
     | Bus (p, e) ->
-        if distance > (energy *. get_efficiency v) then
-            Bus (offset p distance direction, energy *. get_efficiency)
+        if distance > (e *. get_efficiency v) then
+            Bus (offset p distance direction, e *. get_efficiency)
         else
             Bus (offset p distance direction, e -. (distance /. (get_efficiency v)))
     | Car (p, e) ->
-        if distance > (energy *. get_efficiency v) then
-            Car (offset p distance direction, energy *. get_efficiency)
+        if distance > (e *. get_efficiency v) then
+            Car (offset p distance direction, e *. get_efficiency)
         else
             Car (offset p distance direction, e -. (distance /. (get_efficiency v)))
     | Truck (p, e) ->
-        if distance > (energy *. get_efficiency v) then
-            Truck (offset p distance direction, energy *. get_efficiency)
+        if distance > (e *. get_efficiency v) then
+            Truck (offset p distance direction, e *. get_efficiency)
         else
             Truck (offset p distance direction, e -. (distance /. (get_efficiency v)))
 ;;
