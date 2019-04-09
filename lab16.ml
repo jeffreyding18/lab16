@@ -188,7 +188,7 @@ class vehicle_class (capacity: float)
     ................................................................*)
 
     method go (distance : float) (direction : float) : unit =
-        if energy *. efficiency > distance then
+        if energy *. efficiency >= distance then
             (pos <- offset pos distance direction ;
             energy <- energy -. (distance /. efficiency);
             odometer <- odometer +. distance)
