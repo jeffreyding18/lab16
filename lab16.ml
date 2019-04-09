@@ -90,17 +90,17 @@ let go (v : vehicle) (distance : float) (direction : float) : vehicle =
     match v with
     | Bus (p, e) ->
         if distance > (e *. get_efficiency v) then
-            Bus (offset p distance direction, e *. get_efficiency)
+            Bus (offset p distance direction, e *. (get_efficiency v))
         else
             Bus (offset p distance direction, e -. (distance /. (get_efficiency v)))
     | Car (p, e) ->
         if distance > (e *. get_efficiency v) then
-            Car (offset p distance direction, e *. get_efficiency)
+            Car (offset p distance direction, e *. (get_efficiency v))
         else
             Car (offset p distance direction, e -. (distance /. (get_efficiency v)))
     | Truck (p, e) ->
         if distance > (e *. get_efficiency v) then
-            Truck (offset p distance direction, e *. get_efficiency)
+            Truck (offset p distance direction, e *. (get_efficiency v))
         else
             Truck (offset p distance direction, e -. (distance /. (get_efficiency v)))
 ;;
